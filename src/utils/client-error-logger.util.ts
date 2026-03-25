@@ -18,8 +18,8 @@ export function logClientError(message: string, error: unknown, logger: ErrorLog
 
     const context: ErrorContextModel = {
         timestamp: new Date().toISOString(),
-        // v8 ignore next
-        url: typeof window !== 'undefined' ? window.location.href : 'SSR',
+        /* v8 ignore next */
+        url: typeof window !== 'undefined' ? window.location.href : '',
         message,
         stack: errorInstance.stack,
         isHttpError: false,

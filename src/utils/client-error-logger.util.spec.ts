@@ -48,7 +48,7 @@ describe('logClientError', () => {
             logClientError('Op failed', new Error('x'), mockLogger);
 
             const [context] = (mockLogger.log as ReturnType<typeof vi.fn>).mock.calls[0];
-            expect(context.url).not.toBe('SSR');
+            expect(context.url).toBe(window.location.href);
         });
     });
 });

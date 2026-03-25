@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-This is a template repository for `@teqbench` npm packages. The latest version on `main` is the only supported version.
+Pluggable two-layer error handling pipeline for Angular (`@teqbench/tbx-ngx-errors`). The latest version on `main` is the only supported version.
 
 | Version | Supported |
 | ------- | --------- |
