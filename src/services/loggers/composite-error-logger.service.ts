@@ -35,6 +35,12 @@ export class CompositeErrorLoggerService extends ErrorLoggerService {
 
     /** Dispatches the error and context to all registered loggers. */
     log(context: ErrorContextModel, error: unknown): void {
-        this.loggers.forEach((logger) => logger.log(context, error));
+        this.loggers.forEach((logger) => {
+            try {
+                logger.log(context, error);
+            } catch (e) {
+                console.error('CompositeErrorLoggerService: logger failed', e);
+            }
+        });
     }
 }

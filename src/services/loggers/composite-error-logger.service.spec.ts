@@ -39,4 +39,24 @@ describe('CompositeErrorLoggerService', () => {
         const composite = new CompositeErrorLoggerService();
         expect(() => composite.log(mockContext, 'error')).not.toThrow();
     });
+
+    it('should continue dispatching to remaining loggers when one throws', () => {
+        const composite = new CompositeErrorLoggerService();
+        const failingLogger = new MockLogger();
+        failingLogger.log.mockImplementation(() => {
+            throw new Error('Logger exploded');
+        });
+        const survivingLogger = new MockLogger();
+
+        composite.addLogger(failingLogger);
+        composite.addLogger(survivingLogger);
+
+        const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+        const error = new Error('Fail');
+        composite.log(mockContext, error);
+
+        expect(survivingLogger.log).toHaveBeenCalledWith(mockContext, error);
+        expect(consoleSpy).toHaveBeenCalled();
+        consoleSpy.mockRestore();
+    });
 });
