@@ -13,9 +13,7 @@ This is a template repository for `@teqbench` npm packages. The latest version o
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-<!-- TODO when cloning: update the advisory URL below to point to your repository's Security Advisory page -->
-
-To report a vulnerability, open a [GitHub Security Advisory](https://github.com/teqbench/teqbench.dev.templates.tbx-package/security/advisories/new) via the **Security** tab of this repository. This keeps the report private until a fix is available.
+To report a vulnerability, open a [GitHub Security Advisory](https://github.com/teqbench/tbx-ngx-errors/security/advisories/new) via the **Security** tab of this repository. This keeps the report private until a fix is available.
 
 Include as much of the following as possible:
 
