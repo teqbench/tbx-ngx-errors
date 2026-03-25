@@ -9,6 +9,12 @@ export default defineConfig({
         setupFiles: ['src/test-setup.ts'],
         passWithNoTests: false,
         coverage: {
+            exclude: [
+                // Interface-only — no runtime code
+                'src/models/error-context.model.ts',
+                // Abstract class — no implementation to test
+                'src/services/loggers/error-logger.service.ts',
+            ],
             thresholds: {
                 lines: 80,
                 functions: 80,
