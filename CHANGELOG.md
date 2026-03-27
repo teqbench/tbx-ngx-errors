@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/teqbench/tbx-ngx-errors/compare/v0.1.0...v1.0.0) (2026-03-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **exports:** All public exports have been renamed to follow the @teqbench naming convention. Classes, interfaces, and constants now carry the TbxNgx prefix. Consumers must update all imports:
+
+### Code Refactoring
+
+* **exports:** rename all public symbols with TbxNgx prefix ([2322925](https://github.com/teqbench/tbx-ngx-errors/commit/23229256903fdcc51ab1e9f3e80e226aec90eb28))
+
 ## 0.1.0 (2026-03-25)
 
 
