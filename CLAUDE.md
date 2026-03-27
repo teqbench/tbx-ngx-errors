@@ -4,7 +4,7 @@ This file provides guidance for Claude Code when working in this repository.
 
 ## Package Overview
 
-Pluggable two-layer error handling pipeline for Angular. Provides an HTTP error interceptor, a global error handler, and a swappable `ErrorLoggerService` abstraction that unifies all error routing through a single extension point.
+Pluggable two-layer error handling pipeline for Angular. Provides an HTTP error interceptor, a global error handler, and a swappable `TbxNgxErrorLoggerService` abstraction that unifies all error routing through a single extension point.
 
 This is a `@teqbench` Angular package (`tbx-ngx-*`) built with TypeScript and ng-packagr.
 

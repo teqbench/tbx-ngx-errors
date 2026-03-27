@@ -3,19 +3,19 @@ import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import type { ErrorContextModel } from '../models/error-context.model';
-import { ErrorLoggerService } from '../services/loggers/error-logger.service';
-import { httpErrorInterceptor } from './http-error.interceptor';
+import type { TbxNgxErrorContextModel } from '../models/error-context.model';
+import { TbxNgxErrorLoggerService } from '../services/loggers/error-logger.service';
+import { tbxNgxHttpErrorInterceptor } from './http-error.interceptor';
 
-class MockErrorLogger extends ErrorLoggerService {
-    calls: { context: ErrorContextModel; error: unknown }[] = [];
+class MockErrorLogger extends TbxNgxErrorLoggerService {
+    calls: { context: TbxNgxErrorContextModel; error: unknown }[] = [];
 
-    log(context: ErrorContextModel, error: unknown): void {
+    log(context: TbxNgxErrorContextModel, error: unknown): void {
         this.calls.push({ context, error });
     }
 }
 
-describe('httpErrorInterceptor', () => {
+describe('tbxNgxHttpErrorInterceptor', () => {
     let http: HttpClient;
     let httpTesting: HttpTestingController;
     let logger: MockErrorLogger;
@@ -23,14 +23,14 @@ describe('httpErrorInterceptor', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
-                { provide: ErrorLoggerService, useClass: MockErrorLogger },
-                provideHttpClient(withInterceptors([httpErrorInterceptor])),
+                { provide: TbxNgxErrorLoggerService, useClass: MockErrorLogger },
+                provideHttpClient(withInterceptors([tbxNgxHttpErrorInterceptor])),
                 provideHttpClientTesting(),
             ],
         });
         http = TestBed.inject(HttpClient);
         httpTesting = TestBed.inject(HttpTestingController);
-        logger = TestBed.inject(ErrorLoggerService) as MockErrorLogger;
+        logger = TestBed.inject(TbxNgxErrorLoggerService) as MockErrorLogger;
     });
 
     afterEach(() => {
@@ -47,7 +47,7 @@ describe('httpErrorInterceptor', () => {
         expect(logger.calls.length).toBe(0);
     });
 
-    it('should log HTTP errors through ErrorLoggerService', () => {
+    it('should log HTTP errors through TbxNgxErrorLoggerService', () => {
         let error: unknown;
         http.get('/api/test').subscribe({ error: (e) => (error = e) });
 
@@ -60,7 +60,7 @@ describe('httpErrorInterceptor', () => {
         expect(logger.calls.length).toBe(1);
     });
 
-    it('should build ErrorContextModel with HTTP-specific fields', () => {
+    it('should build TbxNgxErrorContextModel with HTTP-specific fields', () => {
         http.get('/api/users').subscribe({ error: () => {} });
 
         httpTesting

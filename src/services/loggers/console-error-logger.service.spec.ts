@@ -1,13 +1,13 @@
-import { ConsoleErrorLoggerService } from './console-error-logger.service';
-import type { ErrorContextModel } from '../../models/error-context.model';
+import { TbxNgxConsoleErrorLoggerService } from './console-error-logger.service';
+import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
 import { StatusCodes } from 'http-status-codes';
 
-describe('ConsoleErrorLoggerService', () => {
-    let logger: ConsoleErrorLoggerService;
+describe('TbxNgxConsoleErrorLoggerService', () => {
+    let logger: TbxNgxConsoleErrorLoggerService;
     let consoleSpy: ReturnType<typeof vi.spyOn>;
 
     beforeEach(() => {
-        logger = new ConsoleErrorLoggerService();
+        logger = new TbxNgxConsoleErrorLoggerService();
         consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     });
 
@@ -20,7 +20,7 @@ describe('ConsoleErrorLoggerService', () => {
     });
 
     it('should format application errors with message prefix', () => {
-        const context: ErrorContextModel = {
+        const context: TbxNgxErrorContextModel = {
             timestamp: '2025-01-15T12:00:00.000Z',
             url: 'http://localhost/',
             message: 'test error',
@@ -40,7 +40,7 @@ describe('ConsoleErrorLoggerService', () => {
     });
 
     it('should format HTTP errors with status and request URL', () => {
-        const context: ErrorContextModel = {
+        const context: TbxNgxErrorContextModel = {
             timestamp: '2025-01-15T12:00:00.000Z',
             url: 'http://localhost/dashboard',
             message: 'Http failure response for /api/users: 500 Server Error',

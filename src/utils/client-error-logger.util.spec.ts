@@ -1,15 +1,15 @@
 import { logClientError } from './client-error-logger.util';
-import { ErrorLoggerService } from '../services/loggers/error-logger.service';
+import { TbxNgxErrorLoggerService } from '../services/loggers/error-logger.service';
 
 describe('logClientError', () => {
     const mockLogger = {
         log: vi.fn(),
-    } as unknown as ErrorLoggerService;
+    } as unknown as TbxNgxErrorLoggerService;
 
     beforeEach(() => vi.clearAllMocks());
 
     describe('when error is an Error instance', () => {
-        it('should build ErrorContextModel from the Error and delegate to logger', () => {
+        it('should build TbxNgxErrorContextModel from the Error and delegate to logger', () => {
             const error = new Error('something failed');
             logClientError('Operation failed', error, mockLogger);
 
