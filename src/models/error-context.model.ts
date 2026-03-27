@@ -1,8 +1,8 @@
 /**
  * Structured context attached to every error passed through the error
- * handling pipeline. Both the HTTP interceptor and the global error handler
- * produce this same shape, ensuring a consistent contract for any logging
- * backend.
+ * handling pipeline. Both the tbxNgxHttpErrorInterceptor and the
+ * TbxNgxGlobalErrorHandlerService produce this same shape, ensuring a
+ * consistent contract for any logging backend.
  *
  * The generic type parameters allow consuming apps to narrow the
  * classification fields to application-specific enums or literal unions
@@ -12,7 +12,7 @@
  * @typeParam TCode - Type for the error code field (e.g., a string enum or number).
  * @typeParam TCategory - Type for the category field (e.g., a string enum).
  */
-export interface ErrorContextModel<TSeverity = string, TCode = string, TCategory = string> {
+export interface TbxNgxErrorContextModel<TSeverity = string, TCode = string, TCategory = string> {
     /** ISO-8601 timestamp when the error was captured. */
     readonly timestamp: string;
     /** Browser URL at the time of the error. */

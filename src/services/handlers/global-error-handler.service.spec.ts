@@ -3,31 +3,31 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { StatusCodes } from 'http-status-codes';
 import { TestBed } from '@angular/core/testing';
 
-import { ErrorLoggerService } from '../loggers/error-logger.service';
-import type { ErrorContextModel } from '../../models/error-context.model';
-import { GlobalErrorHandlerService } from './global-error-handler.service';
+import { TbxNgxErrorLoggerService } from '../loggers/error-logger.service';
+import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
+import { TbxNgxGlobalErrorHandlerService } from './global-error-handler.service';
 
-class MockErrorLogger extends ErrorLoggerService {
-    calls: { context: ErrorContextModel; error: unknown }[] = [];
+class MockErrorLogger extends TbxNgxErrorLoggerService {
+    calls: { context: TbxNgxErrorContextModel; error: unknown }[] = [];
 
-    log(context: ErrorContextModel, error: unknown): void {
+    log(context: TbxNgxErrorContextModel, error: unknown): void {
         this.calls.push({ context, error });
     }
 }
 
-describe('GlobalErrorHandlerService', () => {
-    let handler: GlobalErrorHandlerService;
+describe('TbxNgxGlobalErrorHandlerService', () => {
+    let handler: TbxNgxGlobalErrorHandlerService;
     let logger: MockErrorLogger;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
-                { provide: ErrorLoggerService, useClass: MockErrorLogger },
-                { provide: ErrorHandler, useClass: GlobalErrorHandlerService },
+                { provide: TbxNgxErrorLoggerService, useClass: MockErrorLogger },
+                { provide: ErrorHandler, useClass: TbxNgxGlobalErrorHandlerService },
             ],
         });
-        handler = TestBed.inject(ErrorHandler) as GlobalErrorHandlerService;
-        logger = TestBed.inject(ErrorLoggerService) as MockErrorLogger;
+        handler = TestBed.inject(ErrorHandler) as TbxNgxGlobalErrorHandlerService;
+        logger = TestBed.inject(TbxNgxErrorLoggerService) as MockErrorLogger;
     });
 
     it('should be created', () => {

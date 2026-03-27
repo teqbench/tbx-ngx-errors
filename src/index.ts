@@ -3,7 +3,7 @@
  *
  * Pluggable two-layer error handling pipeline for Angular:
  * HTTP interceptor + global error handler, unified through a swappable
- * ErrorLoggerService abstraction. All exports below form the package's
+ * TbxNgxErrorLoggerService abstraction. All exports below form the package's
  * public API for consuming applications.
  */
 
