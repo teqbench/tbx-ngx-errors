@@ -1,10 +1,10 @@
 import { ErrorHandler, Injectable, inject, Injector } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ErrorLoggerService } from '../loggers/error-logger.service';
-import type { ErrorContextModel } from '../../models/error-context.model';
+import { TbxNgxErrorLoggerService } from '../loggers/error-logger.service';
+import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
 
 @Injectable()
-export class GlobalErrorHandlerService implements ErrorHandler {
+export class TbxNgxGlobalErrorHandlerService implements ErrorHandler {
     // inject() is used instead of constructor injection to avoid a circular
     // dependency on ErrorHandler during DI initialization.
     private readonly injector = inject(Injector);
@@ -15,7 +15,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
         }
 
         try {
-            const logger = this.injector.get(ErrorLoggerService);
+            const logger = this.injector.get(TbxNgxErrorLoggerService);
 
             let originalError = error;
             // Unwrap promise rejections without using 'any' — cast to a known shape
@@ -27,12 +27,12 @@ export class GlobalErrorHandlerService implements ErrorHandler {
             const context = this.buildContext(originalError);
             logger.log(context, originalError);
         } catch (metaError) {
-            console.error('GlobalErrorHandlerService failed to log error:', error);
+            console.error('TbxNgxGlobalErrorHandlerService failed to log error:', error);
             console.error('Logging pipeline failure:', metaError);
         }
     }
 
-    private buildContext(error: unknown): ErrorContextModel {
+    private buildContext(error: unknown): TbxNgxErrorContextModel {
         let message = 'An unknown error occurred';
         let stack: string | undefined;
 
@@ -50,7 +50,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
         return {
             timestamp: new Date().toISOString(),
             // Guard against SSR — window is undefined in Node.js,
-            // and GlobalErrorHandlerService can fire during server-side
+            // and TbxNgxGlobalErrorHandlerService can fire during server-side
             // rendering if an unhandled error occurs in a server context.
             /* v8 ignore next */
             url: typeof window !== 'undefined' ? window.location.href : '',
@@ -59,7 +59,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
             stack,
 
             // HTTP-specific fields are not applicable for app errors,
-            // but must be set explicitly to satisfy the ErrorContextModel interface.
+            // but must be set explicitly to satisfy the TbxNgxErrorContextModel interface.
             httpStatus: undefined,
             httpUrl: undefined,
         };
