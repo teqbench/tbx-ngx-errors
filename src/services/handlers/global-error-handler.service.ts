@@ -13,7 +13,7 @@ import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
  * avoiding a circular dependency on `ErrorHandler` during DI initialization.
  *
  * @usage
- * Provide as Angular's `ErrorHandler` in `app.config.ts` to capture all uncaught
+ * Provide as {@link https://angular.dev | Angular}'s `ErrorHandler` in `app.config.ts` to capture all uncaught
  * application errors and route them through the pluggable logging pipeline.
  *
  * @example

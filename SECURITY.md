@@ -13,7 +13,7 @@ Pluggable two-layer error handling pipeline for [Angular ↗](https://angular.de
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-To report a vulnerability, open a [GitHub Security Advisory ↗](https://github.com/teqbench/tbx-ngx-errors/security/advisories/new) via the **Security** tab of this repository. This keeps the report private until a fix is available.
+To report a vulnerability, email [info@teqbench.dev](mailto:info@teqbench.dev) with the details. This keeps the report private until a fix is available.
 
 Include as much of the following as possible:
 

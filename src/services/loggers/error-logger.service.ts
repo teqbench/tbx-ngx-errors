@@ -13,7 +13,7 @@ import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
  *
  * @usage
  * Extend this class to create a custom error logging backend. Provide the subclass
- * via Angular DI to route all pipeline errors to the custom destination.
+ * via {@link https://angular.dev | Angular} DI to route all pipeline errors to the custom destination.
  *
  * @example
  * ```typescript

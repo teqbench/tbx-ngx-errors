@@ -14,9 +14,11 @@
  * - {@link TbxNgxErrorLoggerService} — Abstract logger that backends implement.
  * - {@link TbxNgxConsoleErrorLoggerService} — Default console-based logger.
  * - {@link TbxNgxCompositeErrorLoggerService} — Fan-out logger for multiple backends.
- * - {@link TbxNgxGlobalErrorHandlerService} — Angular ErrorHandler implementation.
+ * - {@link TbxNgxGlobalErrorHandlerService} — {@link https://angular.dev | Angular} ErrorHandler implementation.
  * - {@link tbxNgxHttpErrorInterceptor} — HTTP interceptor function.
  * - {@link logClientError} — Utility for manually logging caught errors.
+ *
+ * @see {@link https://angular.dev | Angular}
  *
  * @packageDocumentation
  */

@@ -12,7 +12,7 @@ import { TbxNgxErrorLoggerService } from './error-logger.service';
  *
  * @usage
  * Use when the application needs to dispatch errors to more than one destination
- * (e.g., console + Sentry + toast notification). Create an instance, register
+ * (e.g., console + {@link https://sentry.io | Sentry} + toast notification). Create an instance, register
  * backends with {@link TbxNgxCompositeErrorLoggerService.addLogger | addLogger}, and
  * provide it as the {@link TbxNgxErrorLoggerService} implementation.
  *
