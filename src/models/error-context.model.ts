@@ -34,8 +34,6 @@ export interface TbxNgxErrorContextModel<TSeverity = string, TCode = string, TCa
      *
      * @order 1
      *
-     * @see {@link https://www.iso.org/iso-8601-date-and-time-format.html | ISO 8601}
-     *
      * @public
      */
     readonly timestamp: string;
@@ -77,7 +75,7 @@ export interface TbxNgxErrorContextModel<TSeverity = string, TCode = string, TCa
     readonly isHttpError: boolean;
 
     /**
-     * HTTP status code (populated by the interceptor, undefined for app errors)
+     * HTTP status code (populated by {@link tbxNgxHttpErrorInterceptor}, undefined for app errors)
      *
      * @order 6
      *
@@ -86,7 +84,7 @@ export interface TbxNgxErrorContextModel<TSeverity = string, TCode = string, TCa
     readonly httpStatus: number | undefined;
 
     /**
-     * HTTP request URL (populated by the interceptor, undefined for app errors)
+     * HTTP request URL (populated by {@link tbxNgxHttpErrorInterceptor}, undefined for app errors)
      *
      * @order 7
      *
@@ -95,7 +93,7 @@ export interface TbxNgxErrorContextModel<TSeverity = string, TCode = string, TCa
     readonly httpUrl: string | undefined;
 
     /**
-     * Optional severity level, populated by the consuming app's logger or error source
+     * Optional severity level for consumer use — the pipeline never sets this field; set it when constructing a context manually
      *
      * @order 1
      *
@@ -104,7 +102,7 @@ export interface TbxNgxErrorContextModel<TSeverity = string, TCode = string, TCa
     readonly severity?: TSeverity;
 
     /**
-     * Optional error code, populated by the consuming app's logger or error source
+     * Optional error code for consumer use — the pipeline never sets this field; set it when constructing a context manually
      *
      * @order 2
      *
@@ -113,7 +111,7 @@ export interface TbxNgxErrorContextModel<TSeverity = string, TCode = string, TCa
     readonly code?: TCode;
 
     /**
-     * Optional error category, populated by the consuming app's logger or error source
+     * Optional error category for consumer use — the pipeline never sets this field; set it when constructing a context manually
      *
      * @order 3
      *

@@ -9,7 +9,7 @@ import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
  * @remarks
  * HTTP errors are skipped because they are already handled by
  * {@link tbxNgxHttpErrorInterceptor}. Promise rejections are automatically unwrapped
- * before logging. Uses {@link Injector} to lazily resolve {@link TbxNgxErrorLoggerService},
+ * before logging. Uses {@link https://angular.dev/api/core/Injector | Injector} to lazily resolve {@link TbxNgxErrorLoggerService},
  * avoiding a circular dependency on `ErrorHandler` during DI initialization.
  *
  * @usage
@@ -70,7 +70,11 @@ export class TbxNgxGlobalErrorHandlerService implements ErrorHandler {
         }
     }
 
-    /** @internal */
+    /**
+     * Construct a TbxNgxErrorContextModel from an arbitrary error value
+     *
+     * @internal
+     */
     private buildContext(error: unknown): TbxNgxErrorContextModel {
         let message = 'An unknown error occurred';
         let stack: string | undefined;

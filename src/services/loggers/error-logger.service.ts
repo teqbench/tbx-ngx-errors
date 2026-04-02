@@ -8,8 +8,9 @@ import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
  * delegate to this class, so swapping the implementation in `app.config.ts` routes all
  * errors (HTTP and application) to the same backend.
  *
- * The default implementation is {@link TbxNgxConsoleErrorLoggerService}. To integrate a
- * remote service, extend this class and provide it.
+ * The package ships {@link TbxNgxConsoleErrorLoggerService} as a ready-made implementation,
+ * but consumers must explicitly register it (or a custom subclass) via
+ * `{ provide: TbxNgxErrorLoggerService, useClass: ... }` in `app.config.ts`.
  *
  * @usage
  * Extend this class to create a custom error logging backend. Provide the subclass
@@ -18,11 +19,12 @@ import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
  * @example
  * ```typescript
  * // app.config.ts
+ * // SentryErrorLogger is a hypothetical consumer-defined subclass
  * { provide: TbxNgxErrorLoggerService, useClass: SentryErrorLogger }
  * ```
  *
  * @category Services
- * @category Interface
+ * @category Contract
  * @displayName Error Logger Service
  * @order 1
  * @since 1.0.0

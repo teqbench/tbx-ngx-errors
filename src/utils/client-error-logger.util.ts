@@ -2,11 +2,12 @@ import { TbxNgxErrorLoggerService } from '../services/loggers/error-logger.servi
 import type { TbxNgxErrorContextModel } from '../models/error-context.model';
 
 /**
- * Build a structured error context and delegate to the provided logger
+ * Log a manually caught error through the pluggable logging pipeline
  *
  * @remarks
- * Centralises the repeated logError pattern used across services and components that
- * catch their own errors and route them through the pluggable error logging pipeline.
+ * Builds a {@link TbxNgxErrorContextModel} from the caught value and delegates to the
+ * provided {@link TbxNgxErrorLoggerService}, avoiding duplicated context-construction
+ * logic across services and components that catch their own errors.
  *
  * @param message - Human-readable description of the failed operation.
  * @param error - The caught error value (may or may not be an Error instance).

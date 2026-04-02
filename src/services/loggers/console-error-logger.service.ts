@@ -4,7 +4,7 @@ import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
 import { TbxNgxErrorLoggerService } from './error-logger.service';
 
 /**
- * Default error logger that writes structured output to the browser console
+ * Default error logger that writes human-readable output to the browser console
  *
  * @remarks
  * HTTP errors and application errors are formatted distinctly for quick identification
@@ -14,6 +14,12 @@ import { TbxNgxErrorLoggerService } from './error-logger.service';
  * @usage
  * Use as the default logger during development. For production, swap in a remote
  * logging implementation via the {@link TbxNgxErrorLoggerService} DI token.
+ *
+ * @example
+ * ```typescript
+ * // app.config.ts
+ * { provide: TbxNgxErrorLoggerService, useClass: TbxNgxConsoleErrorLoggerService }
+ * ```
  *
  * @category Services
  * @displayName Console Error Logger Service

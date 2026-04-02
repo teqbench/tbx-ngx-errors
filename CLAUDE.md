@@ -41,7 +41,7 @@ This is a `@teqbench` [Angular ↗](https://angular.dev) package (`tbx-ngx-*`) b
 ## Publishing
 
 - Packages are published to [GitHub Packages ↗](https://github.com/orgs/teqbench/packages) (`@teqbench` scope) via the release workflow.
-- Coverage thresholds are enforced in CI: 80% lines/functions/statements, 75% branches, per file.
+- Coverage thresholds are enforced in CI: 80% lines/functions/statements, 75% branches, per file. Lines guarded by `/* v8 ignore next */` are excluded from [V8 ↗](https://v8.dev) coverage collection (used by [Vitest ↗](https://vitest.dev)). This pragma marks code that is unreachable in the test environment (e.g., SSR `window` guards).
 - **Build tooling:** [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr) is used to build [Angular ↗](https://angular.dev) Package Format (APF) output. It uses bundler module resolution internally, so source files use extensionless relative imports (e.g., `'./foo.service'`). The `ng-package.json` at the repo root configures the entry point and output directory. [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr) generates its own `package.json` inside `dist/` with the correct APF entry points (`fesm2022/`, etc.). The release workflow publishes from `dist/` directly (`npm publish ./dist`), so consumers resolve against [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr)'s generated `package.json`. The root `package.json` does not need `main`, `types`, or `exports` fields.
 
 ## TSDoc Convention
@@ -53,7 +53,7 @@ All exported [TypeScript ↗](https://www.typescriptlang.org) declarations must 
 - `@remarks` — Extended description, separated from the summary line.
 - `@typeParam` — Document generic type parameters (not `@template`).
 - `@param` — Document function/method parameters.
-- `@returns` — Document return values.
+- `@returns` — Document return values. Omit for `void` returns.
 - `@example` — Code examples in fenced [TypeScript ↗](https://www.typescriptlang.org) blocks.
 - `@public` / `@internal` — Release tag on every export. Use `@public` unless the export is not part of the package API surface.
 - `@packageDocumentation` — Required on every barrel file (`index.ts`) to describe the package entry point. Use `{@link ExportName}` to cross-reference primary exports.
@@ -167,7 +167,7 @@ summary line
 
 ### Reference Implementation
 
-`@teqbench/tbx-models` `src/base-model.ts` is the reference for a fully migrated [TSDoc ↗](https://tsdoc.org) comment on an interface with member-level docs including `@order` tags. `src/index.ts` is the reference for a `@packageDocumentation` barrel file [TSDoc ↗](https://tsdoc.org) comment.
+`@teqbench/tbx-models` (a separate repository) `src/base-model.ts` is the reference for a fully migrated [TSDoc ↗](https://tsdoc.org) comment on an interface with member-level docs including `@order` tags. `src/index.ts` in that same package is the reference for a `@packageDocumentation` barrel file [TSDoc ↗](https://tsdoc.org) comment. These files are not accessible from this repository — clone `@teqbench/tbx-models` separately to view them.
 
 ### Verification
 

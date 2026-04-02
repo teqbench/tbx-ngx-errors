@@ -6,7 +6,7 @@ import { TbxNgxErrorLoggerService } from './error-logger.service';
  * Composite logger that broadcasts errors to multiple registered backends
  *
  * @remarks
- * Enables a "side-effect" pattern, allowing the consuming app to log to the console
+ * Enables a fan-out pattern, allowing the consuming app to log to the console
  * (for developers) and a notification service (for users) simultaneously without
  * modifying {@link TbxNgxGlobalErrorHandlerService} or {@link tbxNgxHttpErrorInterceptor}.
  *
@@ -24,6 +24,7 @@ import { TbxNgxErrorLoggerService } from './error-logger.service';
  *   useFactory: () => {
  *     const composite = new TbxNgxCompositeErrorLoggerService();
  *     composite.addLogger(new TbxNgxConsoleErrorLoggerService());
+ *     // ToastErrorLogger is a hypothetical consumer-defined subclass
  *     composite.addLogger(inject(ToastErrorLogger));
  *     return composite;
  *   }
@@ -56,6 +57,10 @@ export class TbxNgxCompositeErrorLoggerService extends TbxNgxErrorLoggerService 
 
     /**
      * Dispatch the error and context to all registered loggers
+     *
+     * @remarks
+     * Each logger is called inside its own try/catch. If a logger throws, the failure
+     * is written to `console.error` and the remaining loggers still execute.
      *
      * @param context - Structured metadata describing the error.
      * @param error - The original error value.

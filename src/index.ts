@@ -23,16 +23,16 @@
  * @packageDocumentation
  */
 
-// Models and Interfaces
+// Models
 export * from './models/error-context.model';
-export * from './services/loggers/error-logger.service';
 
-// Logging Implementations
+// Services
+export * from './services/loggers/error-logger.service';
 export * from './services/loggers/console-error-logger.service';
 export * from './services/loggers/composite-error-logger.service';
-
-// Handlers and Interceptors
 export * from './services/handlers/global-error-handler.service';
+
+// Interceptors
 export * from './interceptors/http-error.interceptor';
 
 // Utilities

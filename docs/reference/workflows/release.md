@@ -172,13 +172,13 @@ Key settings:
 
 ### `.release-please-manifest.json`
 
+Tracks the current released version. Updated automatically by [release-please ↗](https://github.com/googleapis/release-please). CI reads this file to generate the version badge. The value shown below is an example — consult the actual file for the current version.
+
 ```json
 {
-    ".": "0.1.0"
+    ".": "1.0.0"
 }
 ```
-
-Tracks the current released version. Updated automatically by [release-please ↗](https://github.com/googleapis/release-please). CI reads this file to generate the version badge.
 
 ---
 
