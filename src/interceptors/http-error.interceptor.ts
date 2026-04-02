@@ -6,12 +6,35 @@ import type { TbxNgxErrorContextModel } from '../models/error-context.model';
 import { TbxNgxErrorLoggerService } from '../services/loggers/error-logger.service';
 
 /**
- * HTTP error interceptor that captures failed responses, builds structured
- * TbxNgxErrorContextModel with HTTP-specific details, and delegates to the same
- * TbxNgxErrorLoggerService backend used by TbxNgxGlobalErrorHandlerService.
+ * HTTP error interceptor that captures failed responses and delegates to the logging pipeline
  *
- * Every HTTP error is logged, then re-thrown so subscribers can handle
- * it in their own error callbacks (e.g., showing form validation messages).
+ * @remarks
+ * Builds a structured {@link TbxNgxErrorContextModel} with HTTP-specific details
+ * (status code, request URL) and delegates to the same {@link TbxNgxErrorLoggerService}
+ * backend used by {@link TbxNgxGlobalErrorHandlerService}.
+ *
+ * Every HTTP error is logged, then re-thrown so subscribers can handle it in their own
+ * error callbacks (e.g., showing form validation messages).
+ *
+ * @usage
+ * Register as an HTTP interceptor in `app.config.ts` using `provideHttpClient` with
+ * `withInterceptors` to automatically capture and log all HTTP errors.
+ *
+ * @example
+ * ```typescript
+ * // app.config.ts
+ * provideHttpClient(withInterceptors([tbxNgxHttpErrorInterceptor]))
+ * ```
+ *
+ * @category Interceptors
+ * @displayName HTTP Error Interceptor
+ * @order 6
+ * @since 1.0.0
+ * @related TbxNgxErrorLoggerService
+ * @related TbxNgxGlobalErrorHandlerService
+ * @related TbxNgxErrorContextModel
+ *
+ * @public
  */
 export const tbxNgxHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
     const logger = inject(TbxNgxErrorLoggerService);
