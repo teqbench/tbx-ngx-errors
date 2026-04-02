@@ -64,4 +64,4 @@ export const appConfig: ApplicationConfig = {
 
 ## License
 
-[Apache-2.0](LICENSE) — Copyright 2025 TeqBench
+[AGPL-3.0](LICENSE) — Copyright 2026 TeqBench

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Pluggable two-layer error handling pipeline for Angular. Provides an HTTP error interceptor, a global error handler, and a swappable ErrorLoggerService abstraction that unifies all error routing through a single extension point.",
   "type": "module",
-  "license": "Apache-2.0",
+  "license": "AGPL-3.0-only",
   "engines": {
     "node": ">=24.0.0"
   },
