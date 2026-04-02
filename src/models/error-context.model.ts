@@ -30,9 +30,11 @@
  */
 export interface TbxNgxErrorContextModel<TSeverity = string, TCode = string, TCategory = string> {
     /**
-     * ISO-8601 timestamp when the error was captured
+     * {@link https://www.iso.org/iso-8601-date-and-time-format.html | ISO 8601} timestamp when the error was captured
      *
      * @order 1
+     *
+     * @see {@link https://www.iso.org/iso-8601-date-and-time-format.html | ISO 8601}
      *
      * @public
      */

@@ -8,8 +8,8 @@ import { TbxNgxErrorLoggerService } from './error-logger.service';
  *
  * @remarks
  * HTTP errors and application errors are formatted distinctly for quick identification
- * during development. Replace with a remote logger (Sentry, LogRocket, custom API) for
- * production use.
+ * during development. Replace with a remote logger ({@link https://sentry.io | Sentry},
+ * {@link https://logrocket.com | LogRocket}, custom API) for production use.
  *
  * @usage
  * Use as the default logger during development. For production, swap in a remote

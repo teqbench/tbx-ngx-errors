@@ -4,7 +4,7 @@ import { TbxNgxErrorLoggerService } from '../loggers/error-logger.service';
 import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
 
 /**
- * Angular ErrorHandler that captures uncaught application errors and routes them through the logging pipeline
+ * {@link https://angular.dev | Angular} {@link https://angular.dev/api/core/ErrorHandler | ErrorHandler} that captures uncaught application errors and routes them through the logging pipeline
  *
  * @remarks
  * HTTP errors are skipped because they are already handled by
@@ -29,6 +29,8 @@ import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
  * @related TbxNgxErrorLoggerService
  * @related tbxNgxHttpErrorInterceptor
  * @related TbxNgxErrorContextModel
+ *
+ * @see {@link https://angular.dev/api/core/ErrorHandler | Angular ErrorHandler}
  *
  * @public
  */

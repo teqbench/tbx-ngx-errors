@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Pluggable two-layer error handling pipeline for Angular (`@teqbench/tbx-ngx-errors`). The latest version on `main` is the only supported version.
+Pluggable two-layer error handling pipeline for [Angular ↗](https://angular.dev) (`@teqbench/tbx-ngx-errors`). The latest version on `main` is the only supported version.
 
 | Version | Supported |
 | ------- | --------- |
@@ -13,7 +13,7 @@ Pluggable two-layer error handling pipeline for Angular (`@teqbench/tbx-ngx-erro
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-To report a vulnerability, open a [GitHub Security Advisory](https://github.com/teqbench/tbx-ngx-errors/security/advisories/new) via the **Security** tab of this repository. This keeps the report private until a fix is available.
+To report a vulnerability, open a [GitHub Security Advisory ↗](https://github.com/teqbench/tbx-ngx-errors/security/advisories/new) via the **Security** tab of this repository. This keeps the report private until a fix is available.
 
 Include as much of the following as possible:
 

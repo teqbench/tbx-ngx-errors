@@ -4,29 +4,29 @@ This file provides guidance for Claude Code when working in this repository.
 
 ## Package Overview
 
-Pluggable two-layer error handling pipeline for Angular. Provides an HTTP error interceptor, a global error handler, and a swappable `TbxNgxErrorLoggerService` abstraction that unifies all error routing through a single extension point.
+Pluggable two-layer error handling pipeline for [Angular ↗](https://angular.dev). Provides an HTTP error interceptor, a global error handler, and a swappable `TbxNgxErrorLoggerService` abstraction that unifies all error routing through a single extension point.
 
-This is a `@teqbench` Angular package (`tbx-ngx-*`) built with TypeScript and ng-packagr.
+This is a `@teqbench` [Angular ↗](https://angular.dev) package (`tbx-ngx-*`) built with [TypeScript ↗](https://www.typescriptlang.org) and [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr).
 
 ## Tech Stack
 
-- **Language:** TypeScript 5.9+ (strict mode, ES2022 target, bundler module resolution)
-- **Testing:** Vitest (globals enabled)
-- **Linting:** ESLint flat config with typescript-eslint
-- **Formatting:** Prettier (enforced via pre-commit hook and CI)
-- **Git Hooks:** Husky + lint-staged
-- **Versioning:** Release Please (Conventional Commits)
-- **Registry:** GitHub Packages (`@teqbench` scope)
+- **Language:** [TypeScript ↗](https://www.typescriptlang.org) 5.9+ (strict mode, ES2022 target, bundler module resolution)
+- **Testing:** [Vitest ↗](https://vitest.dev) (globals enabled)
+- **Linting:** [ESLint ↗](https://eslint.org) flat config with [typescript-eslint ↗](https://typescript-eslint.io)
+- **Formatting:** [Prettier ↗](https://prettier.io) (enforced via pre-commit hook and CI)
+- **Git Hooks:** [Husky ↗](https://typicode.github.io/husky/) + [lint-staged ↗](https://github.com/lint-staged/lint-staged)
+- **Versioning:** [Release Please ↗](https://github.com/googleapis/release-please) ([Conventional Commits ↗](https://www.conventionalcommits.org))
+- **Registry:** [GitHub Packages ↗](https://github.com/orgs/teqbench/packages) (`@teqbench` scope)
 
 ## Key Commands
 
 - `npm ci` — Install dependencies (use this, not `npm install`)
-- `npm run build` — Compile TypeScript to `dist/`
-- `npm test` — Run tests with Vitest
+- `npm run build` — Compile [TypeScript ↗](https://www.typescriptlang.org) to `dist/`
+- `npm test` — Run tests with [Vitest ↗](https://vitest.dev)
 - `npm run test:coverage` — Run tests with coverage enforcement (used in CI)
-- `npm run typecheck` — Full TypeScript type-check (`tsc --noEmit`)
-- `npm run lint` — Run ESLint
-- `npm run format` — Format all files with Prettier
+- `npm run typecheck` — Full [TypeScript ↗](https://www.typescriptlang.org) type-check (`tsc --noEmit`)
+- `npm run lint` — Run [ESLint ↗](https://eslint.org)
+- `npm run format` — Format all files with [Prettier ↗](https://prettier.io)
 - `npm run format:check` — Check formatting (CI mode)
 
 ## Project Structure
@@ -40,13 +40,13 @@ This is a `@teqbench` Angular package (`tbx-ngx-*`) built with TypeScript and ng
 
 ## Publishing
 
-- Packages are published to GitHub Packages (`@teqbench` scope) via the release workflow.
+- Packages are published to [GitHub Packages ↗](https://github.com/orgs/teqbench/packages) (`@teqbench` scope) via the release workflow.
 - Coverage thresholds are enforced in CI: 80% lines/functions/statements, 75% branches, per file.
-- **Build tooling:** ng-packagr is used to build Angular Package Format (APF) output. It uses bundler module resolution internally, so source files use extensionless relative imports (e.g., `'./foo.service'`). The `ng-package.json` at the repo root configures the entry point and output directory. ng-packagr generates its own `package.json` inside `dist/` with the correct APF entry points (`fesm2022/`, etc.). The release workflow publishes from `dist/` directly (`npm publish ./dist`), so consumers resolve against ng-packagr's generated `package.json`. The root `package.json` does not need `main`, `types`, or `exports` fields.
+- **Build tooling:** [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr) is used to build [Angular ↗](https://angular.dev) Package Format (APF) output. It uses bundler module resolution internally, so source files use extensionless relative imports (e.g., `'./foo.service'`). The `ng-package.json` at the repo root configures the entry point and output directory. [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr) generates its own `package.json` inside `dist/` with the correct APF entry points (`fesm2022/`, etc.). The release workflow publishes from `dist/` directly (`npm publish ./dist`), so consumers resolve against [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr)'s generated `package.json`. The root `package.json` does not need `main`, `types`, or `exports` fields.
 
 ## TSDoc Convention
 
-All exported TypeScript declarations must have TSDoc comments validated by `eslint-plugin-tsdoc`. Custom tags are defined in `tsdoc.json` and consumed downstream by API Extractor and the AI HTML documentation generator.
+All exported [TypeScript ↗](https://www.typescriptlang.org) declarations must have [TSDoc ↗](https://tsdoc.org) comments validated by `eslint-plugin-tsdoc`. Custom tags are defined in `tsdoc.json` and consumed downstream by [API Extractor ↗](https://api-extractor.com) and the AI HTML documentation generator.
 
 ### Standard Tags (always use)
 
@@ -54,7 +54,7 @@ All exported TypeScript declarations must have TSDoc comments validated by `esli
 - `@typeParam` — Document generic type parameters (not `@template`).
 - `@param` — Document function/method parameters.
 - `@returns` — Document return values.
-- `@example` — Code examples in fenced TypeScript blocks.
+- `@example` — Code examples in fenced [TypeScript ↗](https://www.typescriptlang.org) blocks.
 - `@public` / `@internal` — Release tag on every export. Use `@public` unless the export is not part of the package API surface.
 - `@packageDocumentation` — Required on every barrel file (`index.ts`) to describe the package entry point. Use `{@link ExportName}` to cross-reference primary exports.
 - `@see` — Reference to related external resources or docs.
@@ -141,7 +141,7 @@ Member-level comment structure (properties, methods):
 
 ### Tag Ordering
 
-Follow this order within a TSDoc comment:
+Follow this order within a [TSDoc ↗](https://tsdoc.org) comment:
 
 Top-level exports:
 
@@ -167,7 +167,7 @@ summary line
 
 ### Reference Implementation
 
-`@teqbench/tbx-models` `src/base-model.ts` is the reference for a fully migrated TSDoc comment on an interface with member-level docs including `@order` tags. `src/index.ts` is the reference for a `@packageDocumentation` barrel file comment.
+`@teqbench/tbx-models` `src/base-model.ts` is the reference for a fully migrated [TSDoc ↗](https://tsdoc.org) comment on an interface with member-level docs including `@order` tags. `src/index.ts` is the reference for a `@packageDocumentation` barrel file [TSDoc ↗](https://tsdoc.org) comment.
 
 ### Verification
 
@@ -175,7 +175,7 @@ After migration, run `npm run lint` and confirm no `tsdoc/syntax` warnings. Run 
 
 ## Commit Convention
 
-Follow **Conventional Commits** strictly:
+Follow [**Conventional Commits** ↗](https://www.conventionalcommits.org) strictly:
 
 - `feat(scope): ...` — New feature (minor bump)
 - `fix(scope): ...` — Bug fix (patch bump)
@@ -196,7 +196,7 @@ Follow **Conventional Commits** strictly:
 
 - Create feature or bugfix branches off `dev` when implementing issues.
 - Write clean, well-tested code that passes lint, typecheck, and tests.
-- Use conventional commit messages.
+- Use [Conventional Commits ↗](https://www.conventionalcommits.org) messages.
 - Create PRs targeting `dev` (never directly target `main`).
 - Keep PRs focused and atomic — one issue per PR.
 
