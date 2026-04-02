@@ -2,16 +2,38 @@ import { TbxNgxErrorLoggerService } from '../services/loggers/error-logger.servi
 import type { TbxNgxErrorContextModel } from '../models/error-context.model';
 
 /**
- * Builds a structured TbxNgxErrorContextModel from a caught error value and
- * delegates to the provided TbxNgxErrorLoggerService.
+ * Log a manually caught error through the pluggable logging pipeline
  *
- * Centralises the repeated logError pattern used across services and
- * components that catch their own errors and route them through the
- * pluggable error logging pipeline.
+ * @remarks
+ * Builds a {@link TbxNgxErrorContextModel} from the caught value and delegates to the
+ * provided {@link TbxNgxErrorLoggerService}, avoiding duplicated context-construction
+ * logic across services and components that catch their own errors.
  *
- * @param message  Human-readable description of the failed operation.
- * @param error    The caught error value (may or may not be an Error instance).
- * @param logger   The injected TbxNgxErrorLoggerService to delegate to.
+ * @param message - Human-readable description of the failed operation.
+ * @param error - The caught error value (may or may not be an Error instance).
+ * @param logger - The injected {@link TbxNgxErrorLoggerService} to delegate to.
+ *
+ * @usage
+ * Call from any service or component catch block to route manually caught errors
+ * through the same logging pipeline used by the interceptor and global handler.
+ *
+ * @example
+ * ```typescript
+ * try {
+ *   await riskyOperation();
+ * } catch (error) {
+ *   logClientError('riskyOperation failed', error, this.logger);
+ * }
+ * ```
+ *
+ * @category Utilities
+ * @displayName Log Client Error
+ * @order 7
+ * @since 1.0.0
+ * @related TbxNgxErrorLoggerService
+ * @related TbxNgxErrorContextModel
+ *
+ * @public
  */
 export function logClientError(
     message: string,
