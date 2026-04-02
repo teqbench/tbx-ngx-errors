@@ -3,12 +3,48 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { TbxNgxErrorLoggerService } from '../loggers/error-logger.service';
 import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
 
+/**
+ * Angular ErrorHandler that captures uncaught application errors and routes them through the logging pipeline
+ *
+ * @remarks
+ * HTTP errors are skipped because they are already handled by
+ * {@link tbxNgxHttpErrorInterceptor}. Promise rejections are automatically unwrapped
+ * before logging. Uses {@link Injector} to lazily resolve {@link TbxNgxErrorLoggerService},
+ * avoiding a circular dependency on `ErrorHandler` during DI initialization.
+ *
+ * @usage
+ * Provide as Angular's `ErrorHandler` in `app.config.ts` to capture all uncaught
+ * application errors and route them through the pluggable logging pipeline.
+ *
+ * @example
+ * ```typescript
+ * // app.config.ts
+ * { provide: ErrorHandler, useClass: TbxNgxGlobalErrorHandlerService }
+ * ```
+ *
+ * @category Services
+ * @displayName Global Error Handler Service
+ * @order 5
+ * @since 1.0.0
+ * @related TbxNgxErrorLoggerService
+ * @related tbxNgxHttpErrorInterceptor
+ * @related TbxNgxErrorContextModel
+ *
+ * @public
+ */
 @Injectable()
 export class TbxNgxGlobalErrorHandlerService implements ErrorHandler {
     // inject() is used instead of constructor injection to avoid a circular
     // dependency on ErrorHandler during DI initialization.
     private readonly injector = inject(Injector);
 
+    /**
+     * Handle an uncaught error by building context and delegating to the logger
+     *
+     * @param error - The uncaught error value.
+     *
+     * @public
+     */
     handleError(error: unknown): void {
         if (error instanceof HttpErrorResponse) {
             return;
@@ -32,6 +68,7 @@ export class TbxNgxGlobalErrorHandlerService implements ErrorHandler {
         }
     }
 
+    /** @internal */
     private buildContext(error: unknown): TbxNgxErrorContextModel {
         let message = 'An unknown error occurred';
         let stack: string | undefined;
