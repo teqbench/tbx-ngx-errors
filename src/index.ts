@@ -1,22 +1,38 @@
 /**
- * Public API Surface for @teqbench/tbx-ngx-errors.
+ * Pluggable two-layer error handling pipeline for {@link https://angular.dev | Angular}
  *
- * Pluggable two-layer error handling pipeline for Angular:
- * HTTP interceptor + global error handler, unified through a swappable
- * TbxNgxErrorLoggerService abstraction. All exports below form the package's
- * public API for consuming applications.
+ * @remarks
+ * Provides an HTTP error interceptor ({@link tbxNgxHttpErrorInterceptor}) and a global
+ * error handler ({@link TbxNgxGlobalErrorHandlerService}), unified through a swappable
+ * {@link TbxNgxErrorLoggerService} abstraction. All errors — HTTP and application — flow
+ * through a single extension point, making it simple to plug in remote logging backends
+ * like {@link https://sentry.io | Sentry} or {@link https://logrocket.com | LogRocket}.
+ *
+ * Key exports:
+ *
+ * - {@link TbxNgxErrorContextModel} — Structured context attached to every error.
+ * - {@link TbxNgxErrorLoggerService} — Abstract logger that backends implement.
+ * - {@link TbxNgxConsoleErrorLoggerService} — Default console-based logger.
+ * - {@link TbxNgxCompositeErrorLoggerService} — Fan-out logger for multiple backends.
+ * - {@link TbxNgxGlobalErrorHandlerService} — {@link https://angular.dev | Angular} ErrorHandler implementation.
+ * - {@link tbxNgxHttpErrorInterceptor} — HTTP interceptor function.
+ * - {@link logClientError} — Utility for manually logging caught errors.
+ *
+ * @see {@link https://angular.dev | Angular}
+ *
+ * @packageDocumentation
  */
 
-// Models and Interfaces
+// Models
 export * from './models/error-context.model';
-export * from './services/loggers/error-logger.service';
 
-// Logging Implementations
+// Services
+export * from './services/loggers/error-logger.service';
 export * from './services/loggers/console-error-logger.service';
 export * from './services/loggers/composite-error-logger.service';
-
-// Handlers and Interceptors
 export * from './services/handlers/global-error-handler.service';
+
+// Interceptors
 export * from './interceptors/http-error.interceptor';
 
 // Utilities
