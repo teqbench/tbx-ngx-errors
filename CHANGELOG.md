@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/teqbench/tbx-ngx-errors/compare/v1.0.0...v2.0.0) (2026-04-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **license:** License changed from Apache-2.0 to AGPL-3.0-only.
+
+### Features
+
+* **license:** switch license from Apache-2.0 to AGPL-3.0 ([9d1a043](https://github.com/teqbench/tbx-ngx-errors/commit/9d1a0433db634cdedca6dc8ebbbdacae61f95bf5))
+
 ## [1.0.0](https://github.com/teqbench/tbx-ngx-errors/compare/v0.1.0...v1.0.0) (2026-03-27)
 
 
