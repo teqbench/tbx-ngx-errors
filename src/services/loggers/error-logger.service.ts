@@ -24,7 +24,6 @@ import type { TbxNgxErrorContextModel } from '../../models/error-context.model';
  * ```
  *
  * @category Services
- * @category Contract
  * @displayName Error Logger Service
  * @order 1
  * @since 1.0.0

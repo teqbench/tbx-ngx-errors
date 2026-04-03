@@ -18,7 +18,6 @@
  * transform error metadata before forwarding to a remote service.
  *
  * @category Models
- * @category Interface
  * @displayName Error Context Model
  * @order 1
  * @since 1.0.0
