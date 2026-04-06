@@ -1,6 +1,6 @@
 {
   "name": "@teqbench/tbx-ngx-errors",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Pluggable two-layer error handling pipeline for Angular. Provides an HTTP error interceptor, a global error handler, and a swappable ErrorLoggerService abstraction that unifies all error routing through a single extension point.",
   "type": "module",
   "license": "AGPL-3.0-only",
