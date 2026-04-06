@@ -63,6 +63,11 @@
     "vitest": "^4.0.18",
     "zone.js": "^0.16.1"
   },
+  "overrides": {
+    "@angular/build": {
+      "vite": "7.3.2"
+    }
+  },
   "lint-staged": {
     "*.{ts,json,md,yml,yaml}": [
       "prettier --write"
