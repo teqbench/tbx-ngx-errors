@@ -1,12 +1,13 @@
 /**
- * Pluggable two-layer error handling pipeline for {@link https://angular.dev | Angular}
+ * Pluggable multi-layer error handling pipeline for {@link https://angular.dev | Angular}
  *
  * @remarks
- * Provides an HTTP error interceptor ({@link tbxNgxHttpErrorInterceptor}) and a global
- * error handler ({@link TbxNgxGlobalErrorHandlerService}), unified through a swappable
- * {@link TbxNgxErrorLoggerService} abstraction. All errors — HTTP and application — flow
- * through a single extension point, making it simple to plug in remote logging backends
- * like {@link https://sentry.io | Sentry} or {@link https://logrocket.com | LogRocket}.
+ * Provides three error-capture layers — an HTTP error interceptor ({@link tbxNgxHttpErrorInterceptor}),
+ * a global error handler ({@link TbxNgxGlobalErrorHandlerService}), and a manual client-error
+ * logger utility ({@link logClientError}) — all unified through a swappable
+ * {@link TbxNgxErrorLoggerService} abstraction. Every error, caught and uncaught, HTTP and
+ * application, flows through a single extension point, making it simple to plug in remote
+ * logging backends like {@link https://sentry.io | Sentry} or {@link https://logrocket.com | LogRocket}.
  *
  * Key exports:
  *
