@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Pluggable two-layer error handling pipeline for [Angular ↗](https://angular.dev) (`@teqbench/tbx-ngx-errors`). The latest version on `main` is the only supported version.
+Pluggable multi-layer error handling pipeline for [Angular ↗](https://angular.dev) (`@teqbench/tbx-ngx-errors`). The latest version on `main` is the only supported version.
 
 | Version | Supported |
 | ------- | --------- |
