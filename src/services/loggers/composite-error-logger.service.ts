@@ -8,7 +8,8 @@ import { TbxNgxErrorLoggerService } from './error-logger.service';
  * @remarks
  * Enables a fan-out pattern, allowing the consuming app to log to the console
  * (for developers) and a notification service (for users) simultaneously without
- * modifying {@link TbxNgxGlobalErrorHandlerService} or {@link tbxNgxHttpErrorInterceptor}.
+ * modifying any of the capture layers — {@link TbxNgxGlobalErrorHandlerService},
+ * {@link tbxNgxHttpErrorInterceptor}, or {@link logClientError}.
  *
  * @usage
  * Use when the application needs to dispatch errors to more than one destination

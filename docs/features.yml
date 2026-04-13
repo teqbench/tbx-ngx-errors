@@ -1,0 +1,21 @@
+# Short, scannable feature bullets rendered in the README "At a glance" section.
+- name: HTTP error interceptor
+  summary: Functional interceptor that captures failed HTTP responses and delegates to the logging pipeline.
+- name: Global error handler
+  summary: Angular ErrorHandler implementation that captures uncaught application errors, skipping HTTP errors already handled by the interceptor.
+- name: Manual client-error logger
+  summary: logClientError utility for routing explicitly caught errors through the same pipeline from any service or component.
+- name: Pluggable logger abstraction
+  summary: Abstract TbxNgxErrorLoggerService acts as the single swap point for routing errors to any backend.
+- name: Console logger
+  summary: Default TbxNgxConsoleErrorLoggerService for local development.
+- name: Composite fan-out logger
+  summary: TbxNgxCompositeErrorLoggerService broadcasts each error to multiple registered backends (console + remote + UI toast).
+- name: Structured error context
+  summary: Every error flows through as a TbxNgxErrorContextModel with timestamp, URL, message, stack, and optional HTTP status and URL.
+- name: SSR-safe
+  summary: Window access in the interceptor and global handler is guarded so errors raised during server-side rendering do not crash.
+- name: Promise rejection unwrapping
+  summary: The global handler automatically unwraps Angular-wrapped promise rejections before logging.
+- name: Zoneless ready
+  summary: Built for Angular 21+ zoneless applications with no Zone.js dependency.

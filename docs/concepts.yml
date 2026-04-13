@@ -1,0 +1,15 @@
+# Glossary rendered in the README "Concepts" section.
+- term: Capture layer
+  definition: One of three places where errors enter the pipeline — the HTTP interceptor, the global error handler, or a manual logClientError call.
+- term: Logger abstraction
+  definition: The abstract TbxNgxErrorLoggerService that every capture layer delegates to; consumers swap in a concrete implementation via Angular DI.
+- term: Error context model
+  definition: TbxNgxErrorContextModel — a structured record built by every capture layer with timestamp, URL, message, stack, and HTTP-specific fields.
+- term: Composite logger
+  definition: A logger that broadcasts each error to a list of registered child loggers, enabling fan-out to multiple backends without altering the capture layers.
+- term: HTTP vs application error
+  definition: HTTP errors are captured by the interceptor and skipped by the global handler; uncaught application errors are captured by the global handler.
+- term: Manual capture
+  definition: Logging an explicitly caught error through logClientError rather than letting it propagate to the global handler.
+- term: Extension point
+  definition: The single site (TbxNgxErrorLoggerService) where a consumer plugs in remote logging or UI-surfacing without touching any capture layer.

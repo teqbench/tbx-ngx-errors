@@ -3,5 +3,12 @@
   "dest": "dist",
   "lib": {
     "entryFile": "src/index.ts"
-  }
+  },
+  "assets": [
+    {
+      "input": "docs",
+      "glob": "*.{md,yml}",
+      "output": "docs"
+    }
+  ]
 }
