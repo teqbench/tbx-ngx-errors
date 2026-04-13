@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.0](https://github.com/teqbench/tbx-ngx-errors/compare/v2.0.1...v2.1.0) (2026-04-13)
+
+
+### Features
+
+* **docs:** onboard tbx-ngx-errors to the per-package docs pipeline ([8278025](https://github.com/teqbench/tbx-ngx-errors/commit/8278025708bb5f01abc58ace51b91ad41539ff94))
+* **docs:** onboard tbx-ngx-errors to the per-package docs pipeline ([78e170f](https://github.com/teqbench/tbx-ngx-errors/commit/78e170f09d02319d0052877b5b72486941a606ae))
+
 ## [2.0.1](https://github.com/teqbench/tbx-ngx-errors/compare/v2.0.0...v2.0.1) (2026-04-06)
 
 
