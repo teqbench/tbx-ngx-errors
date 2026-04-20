@@ -34,9 +34,9 @@ This is a `@teqbench` [Angular ↗](https://angular.dev) package (`tbx-ngx-*`) b
 - `src/` — Source code (all `.ts` files live here)
 - `src/index.ts` — Barrel file (public API exports)
 - `dist/` — Compiled output (git-ignored, only this directory is published)
-- `docs/` — Documentation (placeholder for package-specific guides)
+- `docs/` — Per-package docs pipeline inputs (`overview.md`, `concepts.yml`, `features.yml`, `accessibility.md`) consumed to build the README, plus `reference/workflows/*.md` describing each CI/CD pipeline. Published with the package via `ng-package.json` assets.
 - `.github/workflows/` — CI/CD pipelines (ci, release, sync, dep-compat-check, claude)
-- `.github/dependabot.yml` — Automated dependency update PRs targeting `dev`
+- Dependency updates run centrally via [Renovate ↗](https://docs.renovatebot.com/) (org-level workflow + `renovate-config.js` in `teqbench/.github`); no per-repo config is required
 
 ## Publishing
 
