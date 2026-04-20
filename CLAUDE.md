@@ -36,7 +36,7 @@ This is a `@teqbench` [Angular ↗](https://angular.dev) package (`tbx-ngx-*`) b
 - `dist/` — Compiled output (git-ignored, only this directory is published)
 - `docs/` — Documentation (placeholder for package-specific guides)
 - `.github/workflows/` — CI/CD pipelines (ci, release, sync, dep-compat-check, claude)
-- `.github/dependabot.yml` — Automated dependency update PRs targeting `dev`
+- Dependency updates run centrally via [Renovate ↗](https://docs.renovatebot.com/) (org-level workflow + `renovate-config.js` in `teqbench/.github`); no per-repo config is required
 
 ## Publishing
 
