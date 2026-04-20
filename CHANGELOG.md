@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.0](https://github.com/teqbench/tbx-ngx-errors/compare/v2.1.0...v2.2.0) (2026-04-20)
+
+
+### Features
+
+* **community:** adopt org-default community health files ([7dd1ffe](https://github.com/teqbench/tbx-ngx-errors/commit/7dd1ffe47ce084e37e3bf4f10eec46cffa6d1a7d))
+* **community:** adopt org-default community health files ([29b9102](https://github.com/teqbench/tbx-ngx-errors/commit/29b9102f460584ff4e3cf2655024b4a061f32c98))
+
+
+### Bug Fixes
+
+* **docs:** repair README links to community health files ([d354887](https://github.com/teqbench/tbx-ngx-errors/commit/d3548879d0092d764392fd34c8ece148caf24dd3))
+
 ## [2.1.0](https://github.com/teqbench/tbx-ngx-errors/compare/v2.0.1...v2.1.0) (2026-04-13)
 
 
