@@ -63,6 +63,15 @@
     "vitest": "^4.0.18",
     "zone.js": "^0.16.1"
   },
+  "overridesRationale": {
+    "//": [
+      "@angular/build transitively pulls an older vite whose versions <7.3.2 and <8.0.5",
+      "carry the CVEs resolved in the 2.0.1 release (see CHANGELOG.md). The override forces",
+      "vite 7.3.2 across the install tree so `npm audit` stays clean. Remove this override",
+      "once @angular/build's own lockfile caps vite at a patched version — re-check on each",
+      "@angular/build minor bump."
+    ]
+  },
   "overrides": {
     "@angular/build": {
       "vite": "7.3.2"
