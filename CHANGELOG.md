@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.1](https://github.com/teqbench/tbx-ngx-errors/compare/v2.2.0...v2.2.1) (2026-04-21)
+
+
+### Bug Fixes
+
+* **build:** include CHANGELOG.md in published tarball ([d4b4d8e](https://github.com/teqbench/tbx-ngx-errors/commit/d4b4d8ecad3190e14aac2923d949d8e236ccc790))
+* **build:** include CHANGELOG.md in published tarball ([78ad105](https://github.com/teqbench/tbx-ngx-errors/commit/78ad105184ee68780cf80b1c24be01392e491748))
+
 ## [2.2.0](https://github.com/teqbench/tbx-ngx-errors/compare/v2.1.0...v2.2.0) (2026-04-20)
 
 
