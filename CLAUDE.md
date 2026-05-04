@@ -292,3 +292,5 @@ Follow [**Conventional Commits** ↗](https://www.conventionalcommits.org) stric
 - Never delete branches.
 - Never modify CI workflow files without explicit instruction.
 - Never modify `release-please-config.json`, `.release-please-manifest.json`, or `CHANGELOG.md`.
+- Never modify secrets, tokens, or files containing them. Secrets are defined at the organization level on [GitHub ↗](https://github.com/); repo-local code should reference them by name only and never read or rewrite their values.
+- Never commit content intended to be private, regardless of repository visibility. Treat every commit as if the repo could become public.
