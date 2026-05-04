@@ -199,26 +199,37 @@ const context: TbxNgxErrorContextModel<Severity, number, Category> = {
 
 Interface describing the structured context attached to every error.
 
-| Property      | Type                                     | Description                                                                                             |
-| ------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `timestamp`   | `string`                                 | [ISO 8601 ↗](https://www.iso.org/iso-8601-date-and-time-format.html) timestamp when captured.           |
-| `url`         | `string`                                 | Browser URL at the time of the error (empty string under [SSR ↗](https://angular.dev/guide/ssr)).       |
-| `message`     | `string`                                 | Extracted error message, or stringified value for non-`Error` types.                                    |
-| `stack`       | `string \| undefined`                    | Stack trace (for `Error` instances only).                                                               |
-| `isHttpError` | `boolean`                                | `true` when the error originated from an HTTP response.                                                 |
-| `httpStatus`  | `number \| undefined`                    | HTTP status code (populated by the interceptor; `undefined` for app errors).                            |
-| `httpUrl`     | `string \| undefined`                    | HTTP request URL (populated by the interceptor; `undefined` for app errors).                            |
-| `severity?`   | `TSeverity` (generic, defaults `string`) | Optional consumer field — the pipeline never sets this; supply it when constructing a context manually. |
-| `code?`       | `TCode` (generic, defaults `string`)     | Optional consumer field — the pipeline never sets this.                                                 |
-| `category?`   | `TCategory` (generic, defaults `string`) | Optional consumer field — the pipeline never sets this.                                                 |
+<dl>
+    <dt><code>timestamp</code> (<code>string</code>)</dt>
+    <dd><a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601 ↗</a> timestamp when captured.</dd>
+    <dt><code>url</code> (<code>string</code>)</dt>
+    <dd>Browser URL at the time of the error (empty string under <a href="https://angular.dev/guide/ssr">SSR ↗</a>).</dd>
+    <dt><code>message</code> (<code>string</code>)</dt>
+    <dd>Extracted error message, or stringified value for non-<code>Error</code> types.</dd>
+    <dt><code>stack</code> (<code>string | undefined</code>)</dt>
+    <dd>Stack trace (for <code>Error</code> instances only).</dd>
+    <dt><code>isHttpError</code> (<code>boolean</code>)</dt>
+    <dd><code>true</code> when the error originated from an HTTP response.</dd>
+    <dt><code>httpStatus</code> (<code>number | undefined</code>)</dt>
+    <dd>HTTP status code (populated by the interceptor; <code>undefined</code> for app errors).</dd>
+    <dt><code>httpUrl</code> (<code>string | undefined</code>)</dt>
+    <dd>HTTP request URL (populated by the interceptor; <code>undefined</code> for app errors).</dd>
+    <dt><code>severity?</code> (<code>TSeverity</code>, generic, defaults <code>string</code>)</dt>
+    <dd>Optional consumer field — the pipeline never sets this; supply it when constructing a context manually.</dd>
+    <dt><code>code?</code> (<code>TCode</code>, generic, defaults <code>string</code>)</dt>
+    <dd>Optional consumer field — the pipeline never sets this.</dd>
+    <dt><code>category?</code> (<code>TCategory</code>, generic, defaults <code>string</code>)</dt>
+    <dd>Optional consumer field — the pipeline never sets this.</dd>
+</dl>
 
 ### TbxNgxErrorLoggerService (abstract)
 
 Extension point for error reporting backends.
 
-| Member                | Signature                                                    | Description                                        |
-| --------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
-| `log(context, error)` | `(context: TbxNgxErrorContextModel, error: unknown) => void` | Abstract — implement to route errors to a backend. |
+<dl>
+    <dt><code>log(context, error)</code> — abstract; implement to route errors to a backend</dt>
+    <dd><code>(context: TbxNgxErrorContextModel, error: unknown) =&gt; void</code></dd>
+</dl>
 
 ### TbxNgxConsoleErrorLoggerService
 
@@ -228,18 +239,21 @@ Default logger that writes a formatted message to `console.error`. HTTP and appl
 
 Fan-out logger that broadcasts each error to a list of registered child loggers.
 
-| Method                | Signature                                                    | Description                                                                                                                              |
-| --------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `addLogger(logger)`   | `(logger: TbxNgxErrorLoggerService) => void`                 | Register a child logger.                                                                                                                 |
-| `log(context, error)` | `(context: TbxNgxErrorContextModel, error: unknown) => void` | Dispatch to every registered child; each invocation is isolated in its own try/catch so one backend's failure does not block the others. |
+<dl>
+    <dt><code>addLogger(logger)</code> — register a child logger</dt>
+    <dd><code>(logger: TbxNgxErrorLoggerService) =&gt; void</code></dd>
+    <dt><code>log(context, error)</code> — dispatch to every registered child</dt>
+    <dd><code>(context: TbxNgxErrorContextModel, error: unknown) =&gt; void</code>. Each invocation is isolated in its own try/catch so one backend's failure does not block the others.</dd>
+</dl>
 
 ### TbxNgxGlobalErrorHandlerService
 
 [Angular ↗](https://angular.dev) [`ErrorHandler` ↗](https://angular.dev/api/core/ErrorHandler) implementation.
 
-| Method               | Signature                  | Description                                                                                                                                                                                       |
-| -------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `handleError(error)` | `(error: unknown) => void` | Build a context for the uncaught error and delegate to the injected `TbxNgxErrorLoggerService`. Skips `HttpErrorResponse` (owned by the interceptor). Unwraps Angular-wrapped promise rejections. |
+<dl>
+    <dt><code>handleError(error)</code></dt>
+    <dd><code>(error: unknown) =&gt; void</code> — build a context for the uncaught error and delegate to the injected <code>TbxNgxErrorLoggerService</code>. Skips <code>HttpErrorResponse</code> (owned by the interceptor). Unwraps Angular-wrapped promise rejections.</dd>
+</dl>
 
 ### tbxNgxHttpErrorInterceptor
 
@@ -253,17 +267,22 @@ provideHttpClient(withInterceptors([tbxNgxHttpErrorInterceptor]));
 
 Utility for routing a manually caught error through the logging pipeline.
 
-| Parameter | Type                       | Description                                         |
-| --------- | -------------------------- | --------------------------------------------------- |
-| `message` | `string`                   | Human-readable description of the failed operation. |
-| `error`   | `unknown`                  | The caught error value (may or may not be `Error`). |
-| `logger`  | `TbxNgxErrorLoggerService` | The injected logger to delegate to.                 |
+<dl>
+    <dt><code>message</code> (<code>string</code>)</dt>
+    <dd>Human-readable description of the failed operation.</dd>
+    <dt><code>error</code> (<code>unknown</code>)</dt>
+    <dd>The caught error value (may or may not be <code>Error</code>).</dd>
+    <dt><code>logger</code> (<code>TbxNgxErrorLoggerService</code>)</dt>
+    <dd>The injected logger to delegate to.</dd>
+</dl>
 
 ## Accessibility
 
 - This package provides services, interceptors, and utilities only. It has no direct UI surface, no rendered DOM, and no keyboard, focus, color, or motion considerations. Surfacing errors to users visually (toast, banner, dialog) is the consuming application's responsibility — accessibility for those surfaces is owned by the chosen UI package.
 
 ## Compatibility
+
+<!-- Kept as a pipe table until teqbench/.github#22 lands; the centralized CI README version-check regex extracts versions from this exact shape. -->
 
 | Dependency                                     | Version  |
 | ---------------------------------------------- | -------- |
