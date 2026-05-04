@@ -6,7 +6,7 @@
 
 ## Purpose
 
-Automatically opens pull requests to update dependencies. PRs target the `dev` branch (not `main`) and use [Conventional Commits ↗](https://www.conventionalcommits.org/) message prefixes so they integrate cleanly with the [release-please ↗](https://github.com/googleapis/release-please) workflow. [Renovate ↗](https://docs.renovatebot.com/) replaced [Dependabot ↗](https://github.com/dependabot) at the organisation level for richer grouping, scheduling, and auto-merge support.
+Automatically opens pull requests to update dependencies. PRs target the `dev` branch (not `main`) and use [Conventional Commits ↗](https://www.conventionalcommits.org/) message prefixes so they integrate cleanly with the [release-please ↗](https://github.com/googleapis/release-please) workflow.
 
 ---
 
@@ -36,10 +36,12 @@ All Renovate PRs target **`dev`** (`baseBranchPatterns: ["dev"]`). Updates flow 
 
 ## Commit Message Conventions
 
-| Ecosystem                | Commit prefix  | Labels               |
-| ------------------------ | -------------- | -------------------- |
-| `npm` packages           | `chore(deps):` | `dependencies`       |
-| `github-actions` updates | `chore(ci):`   | `dependencies`, `ci` |
+<dl>
+    <dt><code>npm</code> packages</dt>
+    <dd>Commit prefix: <code>chore(deps):</code>. Labels: <code>dependencies</code>.</dd>
+    <dt><code>github-actions</code> updates</dt>
+    <dd>Commit prefix: <code>chore(ci):</code>. Labels: <code>dependencies</code>, <code>ci</code>.</dd>
+</dl>
 
 `gitAuthor` is set to the `teqbench-automation[bot]` account so commits are correctly attributed.
 
@@ -49,12 +51,16 @@ All Renovate PRs target **`dev`** (`baseBranchPatterns: ["dev"]`). Updates flow 
 
 Related packages are grouped into a single PR to reduce noise:
 
-| Group               | Packages                                                                                                                               |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `teqbench packages` | All `@teqbench/*` packages — auto-merged                                                                                               |
-| `tooling`           | `prettier`, `husky`, `lint-staged`, `vitest`, `prettier-*`, `@prettier/*`, `@vitest/*`, `eslint-*`, `@eslint/*`, `typescript-eslint`   |
-| `typescript`        | `typescript`                                                                                                                           |
-| `github-actions`    | All [GitHub Actions ↗](https://docs.github.com/en/actions) action updates (uses the `chore(ci):` prefix and `dependencies, ci` labels) |
+<dl>
+    <dt><code>teqbench packages</code></dt>
+    <dd>All <code>@teqbench/*</code> packages — auto-merged.</dd>
+    <dt><code>tooling</code></dt>
+    <dd><code>prettier</code>, <code>husky</code>, <code>lint-staged</code>, <code>vitest</code>, <code>prettier-*</code>, <code>@prettier/*</code>, <code>@vitest/*</code>, <code>eslint-*</code>, <code>@eslint/*</code>, <code>typescript-eslint</code>.</dd>
+    <dt><code>typescript</code></dt>
+    <dd><code>typescript</code>.</dd>
+    <dt><code>github-actions</code></dt>
+    <dd>All <a href="https://docs.github.com/en/actions">GitHub Actions ↗</a> action updates (uses the <code>chore(ci):</code> prefix and <code>dependencies, ci</code> labels).</dd>
+</dl>
 
 Ungrouped packages (e.g., `@types/node`) get individual PRs.
 
@@ -84,10 +90,12 @@ All other packages require manual review and merge.
 
 Some packages are intentionally pinned below a major version. These are enforced in the central `renovate-config.js` via `allowedVersions`, not in this repo's `package.json`:
 
-| Package       | Restriction | Rationale                                                                                                                                              |
-| ------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `eslint`      | `< 10.0.0`  | ESLint majors are held until [angular-eslint ↗](https://github.com/angular-eslint/angular-eslint) supports them across the framework's package family. |
-| `@types/node` | `< 25.0.0`  | Pinned to the major matching the [Node.js ↗](https://nodejs.org/) runtime (currently 24). Re-evaluated on each Node LTS bump.                          |
+<dl>
+    <dt><code>eslint</code> (<code>&lt; 10.0.0</code>)</dt>
+    <dd>ESLint majors are held until <a href="https://github.com/angular-eslint/angular-eslint">angular-eslint ↗</a> supports them across the framework's package family.</dd>
+    <dt><code>@types/node</code> (<code>&lt; 25.0.0</code>)</dt>
+    <dd>Pinned to the major matching the <a href="https://nodejs.org/">Node.js ↗</a> runtime (currently 24). Re-evaluated on each Node LTS bump.</dd>
+</dl>
 
 The `package.json` in this repo also documents these intents in the custom `devDependenciesPinned` metadata field (see `package.json`).
 
@@ -95,7 +103,7 @@ The `package.json` in this repo also documents these intents in the custom `devD
 
 ## CI Integration
 
-Renovate PRs trigger the standard CI workflow like any other PR. Because Renovate runs as the `teqbench-automation[bot]` app (not the special `dependabot[bot]` actor), CI has full access to organisation secrets and submodules — there are no Renovate-specific carve-outs in the workflow.
+Renovate PRs trigger the standard CI workflow like any other PR. Because Renovate runs as the `teqbench-automation[bot]` GitHub App, CI has full access to organisation secrets and submodules — there are no Renovate-specific carve-outs in the workflow.
 
 ---
 

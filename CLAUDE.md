@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance for Claude Code when working in this repository.
+This file provides guidance for [Claude Code ↗](https://github.com/anthropics/claude-code) when working in this repository.
 
 ## Package Overview
 
@@ -42,7 +42,7 @@ This is a `@teqbench` [Angular ↗](https://angular.dev) package (`tbx-ngx-*`) b
 
 - Packages are published to [GitHub Packages ↗](https://github.com/orgs/teqbench/packages) (`@teqbench` scope) via the release workflow.
 - Coverage thresholds are enforced in CI: 80% lines/functions/statements, 75% branches, per file. Lines guarded by `/* v8 ignore next */` are excluded from [V8 ↗](https://v8.dev) coverage collection (used by [Vitest ↗](https://vitest.dev)). This pragma marks code that is unreachable in the test environment (e.g., SSR `window` guards).
-- **Build tooling:** [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr) is used to build [Angular ↗](https://angular.dev) Package Format (APF) output. It uses bundler module resolution internally, so source files use extensionless relative imports (e.g., `'./foo.service'`). The `ng-package.json` at the repo root configures the entry point and output directory. [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr) generates its own `package.json` inside `dist/` with the correct APF entry points (`fesm2022/`, etc.). The release workflow publishes from `dist/` directly (`npm publish ./dist`), so consumers resolve against [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr)'s generated `package.json`. The root `package.json` does not need `main`, `types`, or `exports` fields.
+- **Build tooling:** [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr) is used to build [Angular ↗](https://angular.dev) Package Format (APF) output. It uses bundler module resolution internally, so source files use extensionless relative imports (e.g., `'./foo.service'`). The `ng-package.json` at the repo root configures the entry point and output directory. [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr) generates its own `package.json` inside `dist/` with the correct APF entry points (`module`, `typings`, `exports`). The release workflow publishes from `dist/` directly (`npm publish ./dist`), so consumers resolve against [ng-packagr ↗](https://github.com/ng-packagr/ng-packagr)'s generated `package.json`. The root `package.json` does not need `main`, `types`, or `exports` fields.
 
 ## TSDoc Convention
 
@@ -237,6 +237,27 @@ All [TSDoc ↗](https://tsdoc.org) comments, inline code comments, and markdown 
 - Configuration snapshots in documentation must note they are examples that may not reflect the current state.
 - Custom `package.json` metadata fields (not defined by the [npm ↗](https://www.npmjs.com) spec) must be identified as custom where referenced.
 
+## Markdown Tables Convention
+
+Avoid `<table>` and pipe-syntax tables in markdown files (`README.md`, `CHANGELOG.md`, guides, etc.). Use a `<dl>`/`<dt>`/`<dd>` definition list instead.
+
+- **Why.** [GitHub ↗](https://github.com/) doesn't honor any column-width controls in rendered markdown — `<col>`, `width=` attributes, and CSS in `<style>` blocks are all stripped. Multi-column tables wrap unpredictably across viewport sizes and look inconsistent between repos. Definition lists give the same name → description shape with predictable single-column flow that renders the same everywhere [GitHub ↗](https://github.com/) previews markdown.
+
+- **Pattern.**
+
+    ```html
+    <dl>
+        <dt><a href="https://example.com">Item name ↗</a></dt>
+        <dd>One-line description of the item.</dd>
+        <dt>Next item</dt>
+        <dd>Its description.</dd>
+    </dl>
+    ```
+
+    See `.github/profile/README.md` for the canonical example used on the TeqBench organization profile page.
+
+- **When tables are still acceptable.** Only inside source code that emits HTML to a non-[GitHub ↗](https://github.com/) renderer ([Storybook ↗](https://storybook.js.org/) docs pages rendered via [MDX ↗](https://mdxjs.com/), the website's own `<tbx-markdown>` walker, etc.) — those have full control over column widths. Anything that lands in a `.md` file rendered by [GitHub ↗](https://github.com/) itself follows the `<dl>` rule.
+
 ## Commit Convention
 
 Follow [**Conventional Commits** ↗](https://www.conventionalcommits.org) strictly:
@@ -271,3 +292,5 @@ Follow [**Conventional Commits** ↗](https://www.conventionalcommits.org) stric
 - Never delete branches.
 - Never modify CI workflow files without explicit instruction.
 - Never modify `release-please-config.json`, `.release-please-manifest.json`, or `CHANGELOG.md`.
+- Never modify secrets, tokens, or files containing them. Secrets are defined at the organization level on [GitHub ↗](https://github.com/); repo-local code should reference them by name only and never read or rewrite their values.
+- Never commit content intended to be private, regardless of repository visibility. Treat every commit as if the repo could become public.
