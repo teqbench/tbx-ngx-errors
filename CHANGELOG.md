@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.2](https://github.com/teqbench/tbx-ngx-errors/compare/v2.2.1...v2.2.2) (2026-05-04)
+
+
+### Bug Fixes
+
+* trigger patch release for documentation and convention updates ([9145e31](https://github.com/teqbench/tbx-ngx-errors/commit/9145e316d6db4cfef6d6d925147a71bf6c67208f))
+
 ## [2.2.1](https://github.com/teqbench/tbx-ngx-errors/compare/v2.2.0...v2.2.1) (2026-04-21)
 
 
