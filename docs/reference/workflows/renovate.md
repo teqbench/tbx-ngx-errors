@@ -6,7 +6,7 @@
 
 ## Purpose
 
-Automatically opens pull requests to update dependencies. PRs target the `dev` branch (not `main`) and use [Conventional Commits ↗](https://www.conventionalcommits.org/) message prefixes so they integrate cleanly with the [release-please ↗](https://github.com/googleapis/release-please) workflow. [Renovate ↗](https://docs.renovatebot.com/) replaced [Dependabot ↗](https://github.com/dependabot) at the organisation level for richer grouping, scheduling, and auto-merge support.
+Automatically opens pull requests to update dependencies. PRs target the `dev` branch (not `main`) and use [Conventional Commits ↗](https://www.conventionalcommits.org/) message prefixes so they integrate cleanly with the [release-please ↗](https://github.com/googleapis/release-please) workflow.
 
 ---
 
@@ -103,7 +103,7 @@ The `package.json` in this repo also documents these intents in the custom `devD
 
 ## CI Integration
 
-Renovate PRs trigger the standard CI workflow like any other PR. Because Renovate runs as the `teqbench-automation[bot]` app (not the special `dependabot[bot]` actor), CI has full access to organisation secrets and submodules — there are no Renovate-specific carve-outs in the workflow.
+Renovate PRs trigger the standard CI workflow like any other PR. Because Renovate runs as the `teqbench-automation[bot]` GitHub App, CI has full access to organisation secrets and submodules — there are no Renovate-specific carve-outs in the workflow.
 
 ---
 
