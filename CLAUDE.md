@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance for Claude Code when working in this repository.
+This file provides guidance for [Claude Code ↗](https://github.com/anthropics/claude-code) when working in this repository.
 
 ## Package Overview
 
