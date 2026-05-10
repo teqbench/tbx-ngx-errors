@@ -5,14 +5,14 @@
 
 ### Bug Fixes
 
-* **ci:** pin reusable workflows to [@v2](https://github.com/v2).9.3 ([e664317](https://github.com/teqbench/tbx-ngx-errors/commit/e664317a04b6f7d5fc3f0751863fc8bc9c04cdcd)), closes [#28](https://github.com/teqbench/tbx-ngx-errors/issues/28)
+* **ci:** pin reusable workflows to v2.9.3 ([e664317](https://github.com/teqbench/tbx-ngx-errors/commit/e664317a04b6f7d5fc3f0751863fc8bc9c04cdcd)), closes [#28](https://github.com/teqbench/tbx-ngx-errors/issues/28)
 
 ## [2.2.3](https://github.com/teqbench/tbx-ngx-errors/compare/v2.2.2...v2.2.3) (2026-05-09)
 
 
 ### Bug Fixes
 
-* **ci:** pin reusable workflows to [@v2](https://github.com/v2).6.0 ([5bf0d33](https://github.com/teqbench/tbx-ngx-errors/commit/5bf0d339a3325ceb284cb031a8ec56402243ac99))
+* **ci:** pin reusable workflows to v2.6.0 ([5bf0d33](https://github.com/teqbench/tbx-ngx-errors/commit/5bf0d339a3325ceb284cb031a8ec56402243ac99))
 
 ## [2.2.2](https://github.com/teqbench/tbx-ngx-errors/compare/v2.2.1...v2.2.2) (2026-05-04)
 
