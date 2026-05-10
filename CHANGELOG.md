@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.5](https://github.com/teqbench/tbx-ngx-errors/compare/v2.2.4...v2.2.5) (2026-05-10)
+
+
+### Bug Fixes
+
+* **changelog:** strip broken at-mention autolinks from history ([600cd48](https://github.com/teqbench/tbx-ngx-errors/commit/600cd482b8ea8f2fb74b52829dbaa850c2df3e56))
+* **changelog:** strip broken at-mention autolinks from history ([fec79f0](https://github.com/teqbench/tbx-ngx-errors/commit/fec79f0770b36d146ed5025fbbef5215c7e23b10))
+
 ## [2.2.4](https://github.com/teqbench/tbx-ngx-errors/compare/v2.2.3...v2.2.4) (2026-05-10)
 
 
