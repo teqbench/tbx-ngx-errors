@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.4](https://github.com/teqbench/tbx-ngx-errors/compare/v2.2.3...v2.2.4) (2026-05-10)
+
+
+### Bug Fixes
+
+* **ci:** pin reusable workflows to [@v2](https://github.com/v2).9.3 ([e664317](https://github.com/teqbench/tbx-ngx-errors/commit/e664317a04b6f7d5fc3f0751863fc8bc9c04cdcd)), closes [#28](https://github.com/teqbench/tbx-ngx-errors/issues/28)
+
 ## [2.2.3](https://github.com/teqbench/tbx-ngx-errors/compare/v2.2.2...v2.2.3) (2026-05-09)
 
 
